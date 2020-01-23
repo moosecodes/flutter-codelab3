@@ -28,7 +28,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Friendlychat!")),
+      appBar: new AppBar(title: new Text("Friendlychat!!")),
       body: new Column(
         children: <Widget>[
           new Flexible(
@@ -50,10 +50,11 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 
   @override
-  void dispose() {                                                   //new
-    for (ChatMessage message in _messages)                           //new
-      message.animationController.dispose();                         //new
-    super.dispose();                                                 //new
+  void dispose() {
+    //new
+    for (ChatMessage message in _messages) //new
+      message.animationController.dispose(); //new
+    super.dispose(); //new
   }
 
   Widget _buildTextComposer() {
@@ -106,31 +107,30 @@ class ChatMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new SizeTransition(
-      sizeFactor: new CurvedAnimation(
-        parent: animationController, curve: Curves.easeOut),
-      axisAlignment: 0.0,
-      child: new Container(
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
-      child: new Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          new Container(
-            margin: const EdgeInsets.only(right: 16.0),
-            child: new CircleAvatar(child: new Text(_name[0])),
-          ),
-          new Column(
+        sizeFactor: new CurvedAnimation(
+            parent: animationController, curve: Curves.easeOut),
+        axisAlignment: 0.0,
+        child: new Container(
+          margin: const EdgeInsets.symmetric(vertical: 10.0),
+          child: new Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Text(_name, style: Theme.of(context).textTheme.subhead),
               new Container(
-                margin: const EdgeInsets.only(top: 5.0),
-                child: new Text(text),
+                margin: const EdgeInsets.only(right: 16.0),
+                child: new CircleAvatar(child: new Text(_name[0])),
+              ),
+              new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  new Text(_name, style: Theme.of(context).textTheme.subhead),
+                  new Container(
+                    margin: const EdgeInsets.only(top: 5.0),
+                    child: new Text(text),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
-      ),
-    )
-    );
+        ));
   }
 }
